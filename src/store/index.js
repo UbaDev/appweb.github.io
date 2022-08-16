@@ -119,6 +119,7 @@ export default new Vuex.Store({
 
         if (!state.blogPosts.some((post) => post.blogID === doc.id)) {
             const data = {
+              blogPhotoFileURL: doc.data().blogPhotoFileURL,
               blogID:doc.data().blogID,
               blogHTML: doc.data().blogHTML,
               blogCoverPhoto: doc.data().blogCoverPhoto,

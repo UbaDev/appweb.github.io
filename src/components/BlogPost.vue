@@ -22,7 +22,7 @@
 
         </div>
         <div class="blog-photo">
-            <img v-if="post.welcomeScreen" :src="require(`../assets/blogPhotos/${post.photo}.jpg`)" alt="" />
+            <img v-if="post.welcomeScreen" :src="require(`../assets/img/coverr.jpeg`)" alt="" />
             <img v-else :src="post.blogCoverPhoto" alt="" />
 
         </div>

@@ -162,9 +162,14 @@ export default {
     data() {
         return {
             name: 'a',
+            naame:'',
+            latitude:null,
+            naaame:"",
             nameState: null,
             submittedNames: [],
             file:null,
+            nameStatsse:null,
+            nameStaste:null,
             error: null,
             errorMsg: null,
             loading:null,
@@ -222,7 +227,9 @@ export default {
 
         checkFormValidity() {
             const valid = this.$refs.form.checkValidity()
-            this.nameState = valid
+            this.nameStaste = valid;
+            this.nameStatsse = valid;
+            this.nameState = valid;
             return valid
         },
         resetModal() {
@@ -239,7 +246,7 @@ export default {
                     this.loading = true;
 
                     const storageRef = firebase.storage().ref();
-                    const docRef = storageRef.child(`documents/BlogCoverPhotos/${this.$store.state.blogPhotoName}`);
+                    const docRef = storageRef.child(`documents/BlogCoverPhotos/${this.$store.state.blogPhotoFileURL}`);
                     docRef.put(this.file).on(
                         "state_changed",
                         (snapshot) => {
@@ -266,6 +273,7 @@ export default {
 
 
                             await dataBase.set({
+                                blogPhotoFileURL: this.$store.state.blogPhotoFileURL,
                                 blogID: dataBase.id,
                                 blogHTML: this.blogHTML,
                                 blogCoverPhoto: downloadURL,
