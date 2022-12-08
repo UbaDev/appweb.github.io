@@ -10,7 +10,6 @@
     "source": "functions"
   },
   "hosting": {
-    "site": "rentame",
     "public": "public",
     "ignore": [
       "firebase.json",
