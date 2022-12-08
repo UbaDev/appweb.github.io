@@ -5,7 +5,12 @@
             <h4>Publicado el: {{ new Date(this.currentBlog[0].blogDate).toLocaleString(undefined, {
                 dateStyle:"long"})}}</h4>
             <img :src="this.currentBlog[0].blogCoverPhoto" alt="" />
-            <div class="post-content ql-editor" v-html="this.currentBlog[0].blogHTML"></div>
+            <span>Precio: $<span class="post-content" v-html="this.currentBlog[0].blogPrice"></span></span> <br>
+            <span>Descripción: <span class="post-content" v-html="this.currentBlog[0].blogHTML"></span></span> 
+            <span>Teléfono: <span class="post-content" v-html="this.currentBlog[0].blogPhone"></span></span> 
+            <span>Correo electrónico: <span class="post-content" v-html="this.currentBlog[0].blogEmail"></span></span> 
+            <span>Dirección: <span class="post-content" v-html="this.currentBlog[0].address"></span></span> 
+
         </div>
     </div>
 </template>
@@ -29,6 +34,14 @@ export default {
 </script>
 
 <style lang="scss">
+.container{
+    
+    .post-content{
+        display:flex;
+     flex-direction:row;
+
+    }
+}
 .post-view {
     h4{
 

@@ -1,10 +1,11 @@
 <template>
-  <div class="app-wrapper">
+ 
+  <div class="app-wrapper back">
     <div class="app" v-if="this.$store.state.postLoaded">
       <Navigation v-if="!navigation"/>
       <router-view />
       <Footer />
-    </div>
+  </div>
   </div>
 </template>
 
@@ -18,9 +19,11 @@ export default {
   name: "app",
   components: { Navigation, Footer },
   data() {
+    
+   
     return {
       navigation:null,
-    };
+    }
   },
   created() { 
 
@@ -34,6 +37,11 @@ export default {
     this.checkRoute();
 
     this.$store.dispatch("getPost");
+    this.$store.dispatch("getPost2");
+    this.$store.dispatch("getPost3");
+    this.$store.dispatch("getPost4");
+    this.$store.dispatch("getPost5");
+    this.$store.dispatch("getPost6");
 
   },
   mounted() { },
@@ -68,6 +76,7 @@ export default {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  
 }
 
 .container {
@@ -77,10 +86,10 @@ export default {
 
 .link {
   cursor: pointer;
-  text-decoration: none;
   text-transform: uppercase;
-  color: black;
 }
+
+
 
 .link-light {
   color: #fff;
@@ -91,7 +100,7 @@ export default {
   width: 12px;
 
   path {
-    fill: #000;
+    fill: #8b3dff;
   }
 }
 
@@ -109,7 +118,7 @@ button,
   padding:12px 24px;
   background-color: #303030;
   color:#fff;
-  border-radius: 20px;
+  border-radius: 10px !important;
   border:none;
   text-transform: uppercase;
 
@@ -125,7 +134,7 @@ button,
 
 
 .button-ghost {
-  color:#000;
+  color:#8b3dff;
   padding:0;
   border-radius: 0;
   margin-top:50px;
@@ -163,13 +172,12 @@ button,
 
 .blog-card-wrap {
   position: relative;
-  padding: 80px 16px;
-  background-color: #f1f1f1;
+  padding: 30px 16px;
+  background-color: #fff;
 
   @media(min-width:500px) {
-    padding: 100px 16px;
+    padding: 30px 16px;
   }
-
   .blog-cards {
     display: grid;
     gap: 32px;

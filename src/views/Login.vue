@@ -1,6 +1,19 @@
 <template>
     <div class="form-wrap">
+
+        
         <Loading v-if="loading" />
+
+
+
+        <div class="back">
+            <router-link class="back-home" style="display:flex; align-items:center;" :to="{ name: 'Home' }">
+                <img src="../assets/img/hogar.png" width="12" alt="" />
+                &nbsp;Inicio
+        
+            </router-link>
+        
+        </div>
         <form class="login">
             <p class="login-register">
                 ¿Aún no tienes una cuenta?
@@ -21,13 +34,12 @@
             </div>
             <router-link class="forgot-password" :to="{ name: 'ForgotPassword' }">¿Olvidaste tu contraseña?
             </router-link>
-            <button @click.prevent="signIn">Iniciar sesión</button>
+                <button style="background-color:#8b3dff; " class="btnlogin" @click.prevent="signIn">Iniciar sesión</button>
 
             <div class="angle"></div>
 
         </form>
-        <div class="background">
-        </div>
+        <img src="../assets/fondoPurpura.png" alt="a" class="background">
 
 
     </div>
@@ -35,6 +47,7 @@
 
 <script>
 import email from "../assets/Icons/envelope-regular.svg";
+//import left from "../assets/Icons/left-arrow.png";
 import password from "../assets/Icons/lock-alt-solid.svg";
 import firebase from "firebase/app"
 import "firebase/auth";
@@ -59,7 +72,7 @@ export default {
             this.loading = true;
             firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                 .then(() => {
-                    this.$router.push({ name: "Home" });
+                    this.$router.push({ name: "Blogs" });
                     this.error = false;
                     this.loading = false;
                     this.erroMsg = "";
@@ -89,6 +102,18 @@ export default {
         width: 100%
     }
 
+    .back {
+        margin: 20px;
+
+        .back-home {
+                text-decoration: none;
+                color: #000;
+                cursor: pointer;
+            }
+
+    }
+   
+
     .login-register {
         margin-bottom: 32px;
 
@@ -101,6 +126,7 @@ export default {
         padding: 0 10px;
         position: relative;
         display: flex;
+        width:50%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -108,6 +134,13 @@ export default {
 
         @media(min-width:900px) {
             padding: 0 50px;
+        }
+
+        .btnlogin {
+            
+            &:hover {
+                opacity: .5;
+            }
         }
 
         h2 {
@@ -143,6 +176,8 @@ export default {
                         outline: none;
                     }
                 }
+
+                
 
                 .icon {
                     width: 12px;
@@ -185,8 +220,7 @@ export default {
         display: none;
         flex: 2;
         background-size: cover;
-        background-image: url("../assets/background.png");
-        width: 100%;
+        width: 60%;
         height: 100%;
 
         @media (min-width: 900px) {

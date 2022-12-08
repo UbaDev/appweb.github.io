@@ -1,111 +1,41 @@
 <template>
-  <div class="home">
-    <BlogPost v-if="!user" :post="welcomeScreen" />
-    <BlogPost :post="post" v-for="(post, index) in blogPostsFeed" :key="index" />
-    <div class="blog-card-wrap">
-      <div class="container">
-        <h3>Ver los anuncios mas recientes</h3>
-        <div class="blog-cards">
-          <BlogCard :post="post" v-for="(post, index) in blogPostsCards" :key="index" />
-        </div>
-      </div>
-      <div v-if="!user" class="updates">
-        <div class="container">
-          <h2>No te quedes sin publicar tu anuncio, registrate para hacerlo</h2>
-          <router-link class="router-button" :to="{ name: 'Login' }"> Registrate en Rent-me
-            <Arrow class="arrow arrow-light" />
-          </router-link>
-        </div>
-      </div>
+ 
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <video autoplay muted style="height:121vh; width:100%; position:absolute;"  loop id="myVideo">
+      <source src="../assets/onda.mp4" type="video/mp4">
+    </video>
+    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+      <h1 class="text-white">Rentame</h1>
+      <h2 class="text-white opacity-50">Descubre las mejores propiedades en renta de la ciudad</h2>
+      <router-link style="background-color:#8b3dff; text-decoration:none;" class="btn-about" v-if="!user" :to="{ name: 'Login' }">Comenzar
+      </router-link>
     </div>
-  </div>
+  </section><!-- End Hero -->
+ 
+
 </template>
-
 <script>
-import BlogPost from "../components/BlogPost";
-import BlogCard from "../components/BlogCard";
-import Arrow from "../assets/Icons/arrow-right-light.svg"
-
-
 export default {
   name: "Home",
-  components: { BlogPost, BlogCard, Arrow },
+  components: {},
   data() {
     return {
-      welcomeScreen: {
-        title: "Bienvenido",
-        blogPost: "Aqui va mucho texto",
-        welcomeScreen: true,
-        photo: "coding",
-      },
+      
+
     };
   },
   computed: {
-    blogPostsCards() {
-      return this.$store.getters.blogPostsCards;
-    },
-    blogPostsFeed() {
-      return this.$store.getters.blogPostsFeed;
-    },
-
-
-
     user() {
       return this.$store.state.user;
     },
-
-
-
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.blog-card-wrap {
-  h3 {
-    font-weight: 300;
-    font-size: 28px;
-    margin-bottom: 32px;
+img {
+    filter: brightness(0.5);
   }
-}
-
-
-.updates {
-  .container {
-    padding: 100px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @media(min-width: 800px) {
-      padding: 125px 25px;
-      flex-direction: row;
-    }
-
-    .router-button {
-      display: flex;
-      font-size: 14px;
-      text-decoration: none;
-
-      @media(min-width: 800px) {
-        margin-left: auto;
-      }
-    }
-
-    h2 {
-      font-weight: 300;
-      font-size: 32px;
-      max-width: 425px;
-      width: 100%;
-      text-align: center;
-      text-transform: uppercase;
-
-      @media(min-width:800px) {
-        text-align: initial;
-        font-size: 40px;
-      }
-    }
-  }
-
-}
 </style>

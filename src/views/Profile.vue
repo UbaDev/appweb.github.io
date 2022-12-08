@@ -18,8 +18,8 @@
                     <input type="text" id="lastName" v-model="lastName">
                 </div>
                 <div class="input">
-                    <label for="username">Nombre de usuario: </label>
-                    <input type="text" id="username" v-model="username">
+                    <label for="username">RFC: </label>
+                    <input disabled type="text" id="username" v-model="username">
                 </div>
                 <div class="input">
                     <label for="email">Correo electrónico: </label>

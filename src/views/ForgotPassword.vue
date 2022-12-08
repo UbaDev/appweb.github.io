@@ -16,11 +16,12 @@
                         <email class="icon" />
                     </div>
                 </div>
-                <small class="under-text">Escribe tu correo electronico para recuperarla</small>
-                <button @click.prevent="resetPassword">Restablecer</button>
+                <small class="under-text mt-4 mb-4">Escribe tu correo electronico para recuperarla</small>
+                <button style="background-color:#8b3dff;" @click.prevent="resetPassword">Restablecer</button>
                 <div class="angle"></div>
             </form>
-            <div class="background"> </div>
+         <img src="../assets/fondoPurpura.png" alt="a" class="background">
+
         </div>
     </div>
 
@@ -92,6 +93,12 @@ export default {
 
             span {
                 margin: 10px;
+            }
+
+            .btn {
+                &:hover {
+                    opacity:.5;
+                }
             }
         }
     }

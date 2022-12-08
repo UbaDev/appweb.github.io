@@ -70,7 +70,7 @@ export default {
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #ddd;
     min-height: 420px;
     transition: .5s ease all;
 
@@ -159,6 +159,7 @@ export default {
             font-size: 12px;
             padding-bottom: 4px;
             transition: 0.5s ease-in all;
+            color:#000;
 
             &:hover {
                 color: rgba(48, 48, 48, 0.8);

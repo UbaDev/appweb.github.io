@@ -12,8 +12,11 @@ import BlogPreview from "../views/BlogPreview.vue";
 import ViewBlog from "../views/ViewBlog.vue";
 import EditBlog from "../views/EditBlog.vue";
 import MyBlogs from "../views/MyBlogs.vue";
-import Mapa from "../views/Mapa.vue";
 import PayPal from "../views/PayPal.vue";
+import BlogsCasas from "../views/BlogsCasas";
+import BlogsDepas from "../views/BlogsDepas";
+import BlogsOficinas from "../views/BlogsOficinas.vue";
+import BlogsCuartos from "../views/BlogsCuartos.vue";
 
 
 Vue.use(VueRouter);
@@ -26,14 +29,14 @@ const routes = [
 
     meta: {
       title: "Inicio",
-    }
+    },
   },
   {
     path: "/blogs",
     name: "Blogs",
     component: Blogs,
     meta: {
-      title:"Anuncios",
+      title: "Anuncios",
     },
   },
   {
@@ -116,20 +119,44 @@ const routes = [
       title: "Mis anuncios",
     },
   },
-   {
-    path: "/mapa",
-    name: "Mapa",
-    component: Mapa,
-    meta: {
-      title: "Mapa",
-    },
-  },
   {
     path: "/paypal",
     name: "PayPal",
     component: PayPal,
     meta: {
       title: "PayPal",
+    },
+  },
+  {
+    path: "/blogs",
+    name: "BlogsCasas",
+    component: BlogsCasas,
+    meta: {
+      title: "BlogsCasas",
+    },
+  },
+  {
+    path: "/blogs",
+    name: "BlogsDepas",
+    component: BlogsDepas,
+    meta: {
+      title: "BlogsDepas",
+    },
+  },
+  {
+    path: "/blogs",
+    name: "BlogsOficinas",
+    component: BlogsOficinas,
+    meta: {
+      title: "BlogsOficinas",
+    },
+  },
+  {
+    path: "/blogs",
+    name: "BlogsCuartos",
+    component: BlogsCuartos,
+    meta: {
+      title: "BlogsCuartos",
     },
   },
 ];
@@ -141,7 +168,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | Rent-me`;
+  document.title = `${to.meta.title} | Rentame`;
   next();
 });
 

@@ -1,62 +1,28 @@
 <template>
-    <footer>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
         <div class="container">
-            <div class="left">
-                <div class="col-1">
-                    <router-link class="header" :to="{ name: 'Home' }">Rent-me</router-link>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <youTube class="svg-icon" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <twitter class="svg-icon" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <instagram class="svg-icon" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <linkedin class="svg-icon" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-22">
-                    <!-- <ul>
-                        <router-link class="link" :to="{ name: 'Home' }">Inicio</router-link>
-                        <router-link class="link" :to="{ name: 'Blogs' }">Anuncios</router-link>
-                        <router-link v-if="admin" class="link" :to="{ name: 'CreatePost'}">Crear anuncio</router-link>
-                        <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Cuenta</router-link>
-                    </ul> -->
-                </div>
+            <div class="copyright">
+                &copy; Copyright <strong><span></span></strong>. Todos los derechos reservados
             </div>
-            <div class="right">
-                <p>Todos los derechos reservados 2022 - U&Y❤ </p>
-                <p></p>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
+                Desarrollado por <a style="color: #8b3dff"> Yadira & Ubaldo</a>
             </div>
         </div>
-    </footer>
+    </footer><!-- End  Footer -->
 </template>
 
 <script>
-import youTube from "../assets/Icons/youtube-brands.svg";
-import twitter from "../assets/Icons/twitter-brands.svg";
-import instagram from "../assets/Icons/instagram-brands.svg";
-import linkedin from "../assets/Icons/linkedin-brands.svg";
+
 
 export default {
     name: "foote-vue",
     components: {
-        youTube,
-        twitter,
-        instagram,
-        linkedin,
+
     },
     computed: {
         user() {
@@ -70,142 +36,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css">
+#footer {
+    background: #e9e8e6;
+    padding: 30px 0;
+    color: #222222;
+    font-size: 14px;
+    text-align: center;
+}
 
+#footer .credits {
+    padding-top: 5px;
+    font-size: 13px;
+}
 
-
-
-footer {
-    margin-top: auto;
-    padding: 100px 25px;
-    background-color: #303030;
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-
-        @media (min-width: 800px) {
-            flex-direction: row;
-            gap: 0;
-        }
-
-        >div {
-            display: flex;
-            flex: 1;
-        }
-
-        .left {
-            gap: 32px;
-            color: #fff;
-            flex-direction: column;
-            align-items: center;
-
-            @media (min-width: 800px) {
-                flex-direction: row;
-                align-items: initial;
-                gap: 0;
-            }
-
-
-            .header {
-                text-align:center;
-                font-size: 24px;
-                color: #fff;
-                text-decoration: none;
-                font-weight: 600;
-                @media (min-width: 800px) {
-                        text-align: initial;
-                    }
-            }
-
-            ul {
-                gap: 16px;
-                list-style: none;
-                display: flex;
-            }
-
-            .col-1,
-            .col-22 {
-                gap: 32px;
-                display: flex;
-                flex: 1;
-
-                @media (min-width: 800px) {
-                    gap: 0;
-                }
-            }
-
-            .col-1 {
-                flex-direction: column;
-
-                h2 {
-                    text-align: center;
-
-                    @media (min-width: 800px) {
-                        text-align: initial;
-                    }
-                }
-
-                ul {
-                    margin-top: auto;
-
-
-                    li {
-                        display: flex;
-                        align-items: center;
-
-                        .svg-icon {
-                            width: 24px;
-                            height: auto;
-                            color: #fff;
-                        }
-                    }
-                }
-            }
-
-
-            .col-22 {
-                ul {
-transform: transtaleX(-90px);
-
-                    height: 100%;
-                    justify-content: center;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-
-                    @media (min-width: 800px) {
-                        flex-direction: column;
-                    }
-
-                    .link {
-                        font-size: 16px;
-                        font-weight: 500;
-                        color: #fff;
-                        text-decoration: none;
-                        
-                    }
-                }
-            }
-        }
-
-        .right {
-            gap: 32px;
-            color: #fff;
-            align-items: center;
-            flex-direction: column;
-
-            @media (min-width: 800px) {
-                align-items: flex-end;
-                gap: 0;
-            }
-        }
-
-        p {
-            margin-top: auto;
-        }
-    }
-
-
+#footer .credits a {
+    color: #34b7a7;
 }
 </style>

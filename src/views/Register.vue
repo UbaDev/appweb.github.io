@@ -1,5 +1,13 @@
 <template>
     <div class="form-wrap">
+        <div class="back">
+            <router-link class="back-home" style="display:flex; align-items:center;" :to="{ name: 'Home' }">
+                <img src="../assets/img/hogar.png" width="12" alt="" />
+                &nbsp;Inicio
+                
+            </router-link>
+            
+        </div>
         <Loading v-if="loading" />
         <form class="register">
             <p class="login-register">
@@ -7,7 +15,7 @@
                 <router-link class="router-link" :to="{ name: 'Login' }">Iniciar sesión</router-link>
             </p>
 
-            <h2>Forma parte de Rent-me</h2>
+            <h2>Forma parte de nuestra comunidad</h2>
             <div class="inputs">
                 <div class="input">
                     <input type="text" placeholder="Nombre" v-model="firstName">
@@ -18,7 +26,7 @@
                     <user class="icon" />
                 </div>
                 <div class="input">
-                    <input type="text" placeholder="Nombre de usuario" v-model="username">
+                    <input type="text" placeholder="RFC" v-model="username">
                     <user class="icon" />
                 </div>
                 <div class="input">
@@ -32,12 +40,14 @@
                 </div>
                 <div v-show="error" class="error">{{this.errorMsg}}</div>
             </div>
-            <button @click.prevent="register" type="button">Registrarme</button>
+            <button style="background-color:#8b3dff;" @click.prevent="register" type="button">Registrarme</button>
             <div class="angle"></div>
 
         </form>
-        <div class="background">
-        </div>
+
+
+        <img src="../assets/fondoPurpura.png" alt="a" class="background">
+
 
 
     </div>
@@ -105,7 +115,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.back {
+    margin: 20px;
+
+    .back-home {
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
+
+}
 .register {
     max-width: 550px;
+
+    button {
+        margin-top:5px;
+        &:hover{
+            opacity: .5;
+        }
+            }
 }
 </style>

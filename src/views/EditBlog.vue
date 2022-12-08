@@ -7,20 +7,42 @@
                 <p><span>Error: </span>{{ this.errorMsg }}</p>
             </div>
             <div class="blog-info">
-                <input type="text" placeholder="Escribe el titulo del anuncio" v-model="blogTitle" />
+
+
+
                 <div class="upload-file">
                     <label for="blog-photo">Subir foto de portada</label>
-                    <input type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, .jpeg" />
-                    <button @click="openPreview" class="preview" :class="{ 'button-inactive': !this.$store.state.blogPhotoFileURL }">
+                    <input type="file" ref="blogPhoto" id="blog-photo" @change="fileChange"
+                        accept=".png, .jpg, .jpeg" />
+                    <button @click="openPreview" class="preview"
+                        :class="{ 'button-inactive': !this.$store.state.blogPhotoFileURL }">
                         Vista previa
                     </button>
                     <span>Archivo elegido: {{ this.$store.state.blogPhotoName }}</span>
                 </div>
             </div>
-            <div class="editor">
-                <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler
-                 @image-added="imageHandler"/>
+
+            <div class="contenido">
+                <div class="inputs">
+                    <input type="text" placeholder="Escribe el titulo del anuncio" v-model="blogTitle" />
+
+                    <input type="text" placeholder="Escribe tu numero de teléfono" v-model="blogPhone" />
+
+                    <input type="text" disabled placeholder="Escribe la dirección de la propiedad" v-model="blogAddress" />
+
+                    <input type="email" placeholder="Escribe tú correo electrónico" v-model="blogEmail" />
+
+                    <input type="number" placeholder="Precio del inmueble" v-model="blogPrice" />
+
+                </div>
+
+                <div class="editor">
+                    <vue-editor :editorOptions="editorSettings" v-model="blogHTML"
+                        useCustomImageHandler @image-added="imageHandler" />
+                </div>
+
             </div>
+
             <div class="blog-actions">
             <button @click="updateBlog">Guardar cambios</button>
                 <router-link class="router-button" :to="{name: 'BlogPreview'}">Vista previa de cambios</router-link>
@@ -92,6 +114,41 @@ export default {
                 this.$store.commit('newBlogPost', payload);
             },
         },
+         blogPhone: {
+            get() {
+                return this.$store.state.blogPhone;
+            },
+            set(payload) {
+                this.$store.commit('newBlogPost4', payload);
+            },
+        },
+
+        blogEmail: {
+            get() {
+                return this.$store.state.blogEmail;
+            },
+            set(payload) {
+                this.$store.commit('newBlogPost2', payload);
+            },
+        },
+
+        blogAddress: {
+            get() {
+                return this.$store.state.blogAddress;
+            },
+            set(payload) {
+                this.$store.commit('newBlogPost3', payload);
+            },
+        },
+
+        blogPrice: {
+            get() {
+                return this.$store.state.blogPrice;
+            },
+            set(payload) {
+                this.$store.commit('updateBlogTitle5', payload);
+            },
+        },
     },
     methods: {
         fileChange(){
@@ -128,7 +185,7 @@ export default {
                 if(this.file) {
                     this.loading = true;
                     const storageRef = firebase.storage().ref();
-                    const docRef = storageRef.child(`documents/BlogCoverPhotos/${this.$store.state.blogPhotoName}`);
+                    const docRef = storageRef.child(`documents/BlogCoverPhotos/${this.$store.state.blogPhotoFileURL}`);
                     docRef.put(this.file).on(
                         "state_changed",
                         (snapshot) => {
@@ -141,10 +198,15 @@ export default {
                             const downloadURL = await docRef.getDownloadURL();
 
                             await dataBase.update({
+                                blogPhotoFileURL: this.$store.state.blogPhotoFileURL,
                                 blogHTML: this.blogHTML,
                                 blogCoverPhoto: downloadURL,
                                 blogCoverPhotoName: this.blogCoverPhotoName,
                                 blogTitle:this.blogTitle,
+                                blogPhone: this.blogPhone,
+                                blogPrice: this.blogPrice,
+                                blogEmail: this.blogEmail,
+                                blogAddress: this.blogAddress,
 
                             });
                             await this.$store.dispatch("updatePost", this.routeID);
